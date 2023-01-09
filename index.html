@@ -1,18 +1,79 @@
 <html>
+<head>
+  <style>
+    body {
+      text-align: center;
+      font-family: sans-serif;
+      background-color: #dddddd;
+      padding: 30px;
+    }
+    form {
+      max-width: 500px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      padding: 20px;
+    }
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 16px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+    }
+    button[type="button"] {
+      width: 100%;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: #ffffff;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button[type="button"]:hover {
+      background-color: #45a049;
+    }
+    p {
+      margin: 20px 0;
+      font-size: 18px;
+    }
+  </style>
+</head>
 <body>
 
 <form>
   <label for="input">Enter your message:</label><br>
-  <input type="text" id="input"><br>
-  <button type="button" onclick="displayMessage()">Submit</button>
+  <input type="text" id="input" autofocus><br>
+  <button type="button" onclick="displayMessage()">Enviar Pergunta ou Pedido</button>
 </form> 
 
 <p id="output"></p>
 
 <script>
+const messages = [
+  "Oi, Biaaaa, do que você gostaria hoje?",
+  "Entendi, você quer mais nudes",
+  "Carregando nude",
+  "c==========3",
+  "Espero que tenha gostado",
+];
+let index = 0;
+
 function displayMessage() {
-  document.getElementById("output").innerHTML = "Oi Biaaa";
+  document.getElementById("output").innerHTML = messages[index];
+  index = (index + 1) % messages.length;
 }
+
+document.getElementById("input").addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    displayMessage();
+  }
+});
 </script>
 
 </body>
